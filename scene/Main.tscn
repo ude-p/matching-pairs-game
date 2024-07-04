@@ -1,0 +1,255 @@
+[gd_scene load_steps=12 format=3 uid="uid://05n4u4buqody"]
+
+[ext_resource type="Texture2D" uid="uid://dr7ul6nknnguo" path="res://assets/Poker Cards pack/Decks .png" id="1_g2iob"]
+[ext_resource type="Script" path="res://scripts/state_machine/GameLogic.cs" id="1_utpty"]
+[ext_resource type="Texture2D" uid="uid://cr7sadid5tu2o" path="res://assets/Poker Cards pack/cards.png" id="2_gv7q7"]
+[ext_resource type="Script" path="res://scripts/card/CardManager.cs" id="3_hjfqd"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="4_kff5u"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="5_tjwm1"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="6_u6aay"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_b5b1y"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ojy0s"]
+texture = ExtResource("1_g2iob")
+margins = Vector2i(1, 0)
+9:1/size_in_atlas = Vector2i(3, 4)
+9:1/0 = 0
+13:1/size_in_atlas = Vector2i(3, 4)
+13:1/0 = 0
+1:6/size_in_atlas = Vector2i(3, 4)
+1:6/0 = 0
+5:6/size_in_atlas = Vector2i(3, 4)
+5:6/0 = 0
+9:6/size_in_atlas = Vector2i(3, 4)
+9:6/0 = 0
+13:6/size_in_atlas = Vector2i(3, 4)
+13:6/0 = 0
+1:1/size_in_atlas = Vector2i(3, 4)
+1:1/0 = 0
+5:1/size_in_atlas = Vector2i(3, 4)
+5:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3k3gy"]
+texture = ExtResource("2_gv7q7")
+6:1/size_in_atlas = Vector2i(3, 4)
+6:1/0 = 0
+10:1/size_in_atlas = Vector2i(3, 4)
+10:1/0 = 0
+14:1/size_in_atlas = Vector2i(3, 4)
+14:1/0 = 0
+18:1/size_in_atlas = Vector2i(3, 4)
+18:1/0 = 0
+22:1/size_in_atlas = Vector2i(3, 4)
+22:1/0 = 0
+26:1/size_in_atlas = Vector2i(3, 4)
+26:1/0 = 0
+30:1/size_in_atlas = Vector2i(3, 4)
+30:1/0 = 0
+34:1/size_in_atlas = Vector2i(3, 4)
+34:1/0 = 0
+38:1/size_in_atlas = Vector2i(3, 4)
+38:1/0 = 0
+42:1/size_in_atlas = Vector2i(3, 4)
+42:1/0 = 0
+46:1/size_in_atlas = Vector2i(3, 4)
+46:1/0 = 0
+50:1/size_in_atlas = Vector2i(3, 4)
+50:1/0 = 0
+55:1/size_in_atlas = Vector2i(3, 4)
+55:1/next_alternative_id = 2
+55:1/0 = 0
+55:7/size_in_atlas = Vector2i(3, 4)
+55:7/0 = 0
+50:7/size_in_atlas = Vector2i(3, 4)
+50:7/0 = 0
+46:7/size_in_atlas = Vector2i(3, 4)
+46:7/0 = 0
+42:7/size_in_atlas = Vector2i(3, 4)
+42:7/0 = 0
+38:7/size_in_atlas = Vector2i(3, 4)
+38:7/0 = 0
+34:7/size_in_atlas = Vector2i(3, 4)
+34:7/0 = 0
+2:7/size_in_atlas = Vector2i(3, 4)
+2:7/0 = 0
+6:7/size_in_atlas = Vector2i(3, 4)
+6:7/0 = 0
+10:7/size_in_atlas = Vector2i(3, 4)
+10:7/0 = 0
+14:7/size_in_atlas = Vector2i(3, 4)
+14:7/0 = 0
+18:7/size_in_atlas = Vector2i(3, 4)
+18:7/0 = 0
+22:7/size_in_atlas = Vector2i(3, 4)
+22:7/0 = 0
+26:7/size_in_atlas = Vector2i(3, 4)
+26:7/0 = 0
+30:7/size_in_atlas = Vector2i(3, 4)
+30:7/0 = 0
+50:13/size_in_atlas = Vector2i(3, 4)
+50:13/0 = 0
+46:13/size_in_atlas = Vector2i(3, 4)
+46:13/0 = 0
+42:13/size_in_atlas = Vector2i(3, 4)
+42:13/0 = 0
+38:13/size_in_atlas = Vector2i(3, 4)
+38:13/0 = 0
+34:13/size_in_atlas = Vector2i(3, 4)
+34:13/0 = 0
+30:13/size_in_atlas = Vector2i(3, 4)
+30:13/0 = 0
+26:13/size_in_atlas = Vector2i(3, 4)
+26:13/0 = 0
+50:19/size_in_atlas = Vector2i(3, 4)
+50:19/0 = 0
+46:19/size_in_atlas = Vector2i(3, 4)
+46:19/0 = 0
+42:19/size_in_atlas = Vector2i(3, 4)
+42:19/0 = 0
+38:19/size_in_atlas = Vector2i(3, 4)
+38:19/0 = 0
+34:19/size_in_atlas = Vector2i(3, 4)
+34:19/0 = 0
+30:19/size_in_atlas = Vector2i(3, 4)
+30:19/0 = 0
+26:19/size_in_atlas = Vector2i(3, 4)
+26:19/0 = 0
+22:13/size_in_atlas = Vector2i(3, 4)
+22:13/0 = 0
+22:19/size_in_atlas = Vector2i(3, 4)
+22:19/0 = 0
+18:19/size_in_atlas = Vector2i(3, 4)
+18:19/0 = 0
+18:13/size_in_atlas = Vector2i(3, 4)
+18:13/0 = 0
+14:13/size_in_atlas = Vector2i(3, 4)
+14:13/0 = 0
+14:19/size_in_atlas = Vector2i(3, 4)
+14:19/0 = 0
+10:19/size_in_atlas = Vector2i(3, 4)
+10:19/0 = 0
+10:13/size_in_atlas = Vector2i(3, 4)
+10:13/0 = 0
+6:13/size_in_atlas = Vector2i(3, 4)
+6:13/0 = 0
+2:13/size_in_atlas = Vector2i(3, 4)
+2:13/0 = 0
+2:19/size_in_atlas = Vector2i(3, 4)
+2:19/0 = 0
+6:19/size_in_atlas = Vector2i(3, 4)
+6:19/0 = 0
+2:1/size_in_atlas = Vector2i(3, 4)
+2:1/next_alternative_id = 2
+2:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gj7nx"]
+tile_size = Vector2i(50, 68)
+sources/1 = SubResource("TileSetAtlasSource_3k3gy")
+sources/0 = SubResource("TileSetAtlasSource_ojy0s")
+
+[node name="Main" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -47.0
+offset_top = -185.0
+offset_right = 439.0
+offset_bottom = 679.0
+scale = Vector2(1.43, 1.43)
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.49375, 0.5, 0.425, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(300, 432)
+ignore_rotation = false
+zoom = Vector2(0.7, 0.7)
+
+[node name="GameLogic" type="Node2D" parent="."]
+script = ExtResource("1_utpty")
+
+[node name="CardTileMap" type="TileMap" parent="GameLogic"]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_gj7nx")
+format = 2
+script = ExtResource("3_hjfqd")
+
+[node name="StateChart" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_kff5u")
+track_in_editor = true
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("5_tjwm1")
+initial_state = NodePath("Player")
+
+[node name="Player" type="Node" parent="StateChart/Root"]
+script = ExtResource("5_tjwm1")
+initial_state = NodePath("Play")
+
+[node name="Play" type="Node" parent="StateChart/Root/Player"]
+script = ExtResource("6_u6aay")
+
+[node name="ToOutcome" type="Node" parent="StateChart/Root/Player/Play"]
+script = ExtResource("7_b5b1y")
+to = NodePath("../../Outcome")
+event = &"ToOutcome"
+delay_in_seconds = "0.5
+"
+
+[node name="Outcome" type="Node" parent="StateChart/Root/Player"]
+script = ExtResource("6_u6aay")
+
+[node name="ToPlay" type="Node" parent="StateChart/Root/Player/Outcome"]
+script = ExtResource("7_b5b1y")
+to = NodePath("../..")
+event = &"ToPlay"
+delay_in_seconds = "1.5"
+
+[node name="ToAIPlay" type="Node" parent="StateChart/Root/Player/Outcome"]
+script = ExtResource("7_b5b1y")
+to = NodePath("../../../AI")
+event = &"ToAIPlay"
+delay_in_seconds = "1.5"
+
+[node name="AI" type="Node" parent="StateChart/Root"]
+script = ExtResource("5_tjwm1")
+initial_state = NodePath("AIPlay")
+
+[node name="AIPlay" type="Node" parent="StateChart/Root/AI"]
+script = ExtResource("6_u6aay")
+
+[node name="ToAIOutcome" type="Node" parent="StateChart/Root/AI/AIPlay"]
+script = ExtResource("7_b5b1y")
+to = NodePath("../../AIOutcome")
+event = &"ToAIOutcome"
+delay_in_seconds = "0.5"
+
+[node name="AIOutcome" type="Node" parent="StateChart/Root/AI"]
+script = ExtResource("6_u6aay")
+
+[node name="ToAIPlay" type="Node" parent="StateChart/Root/AI/AIOutcome"]
+script = ExtResource("7_b5b1y")
+to = NodePath("../..")
+event = &"ToAIPlay"
+delay_in_seconds = "0.8"
+
+[node name="ToPlay" type="Node" parent="StateChart/Root/AI/AIOutcome"]
+script = ExtResource("7_b5b1y")
+to = NodePath("../../../Player")
+event = &"ToPlay"
+delay_in_seconds = "0.5
+"
+
+[connection signal="state_entered" from="StateChart/Root/Player/Play" to="GameLogic" method="OnPlayStateEntered"]
+[connection signal="state_entered" from="StateChart/Root/Player/Outcome" to="GameLogic" method="OnOutcomeStateEntered"]
+[connection signal="state_entered" from="StateChart/Root/AI/AIPlay" to="GameLogic" method="OnAIPlayStateEntered"]
+[connection signal="state_entered" from="StateChart/Root/AI/AIOutcome" to="GameLogic" method="OnAIOutcomeStateEntered"]
