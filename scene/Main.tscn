@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://05n4u4buqody"]
+[gd_scene load_steps=14 format=3 uid="uid://05n4u4buqody"]
 
+[ext_resource type="Script" path="res://scripts/main/GlobalSettings.cs" id="1_fegsy"]
 [ext_resource type="Texture2D" uid="uid://dr7ul6nknnguo" path="res://assets/Poker Cards pack/Decks .png" id="1_g2iob"]
 [ext_resource type="Script" path="res://scripts/state_machine/GameLogic.cs" id="1_utpty"]
+[ext_resource type="FontFile" uid="uid://c6tqy6d0d10s4" path="res://assets/Fonts/NbPixelFontBundle_v1_0/Habbo.ttf" id="2_3daee"]
 [ext_resource type="Texture2D" uid="uid://cr7sadid5tu2o" path="res://assets/Poker Cards pack/cards.png" id="2_gv7q7"]
 [ext_resource type="Script" path="res://scripts/card/CardManager.cs" id="3_hjfqd"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="4_kff5u"]
@@ -148,6 +150,7 @@ sources/1 = SubResource("TileSetAtlasSource_3k3gy")
 sources/0 = SubResource("TileSetAtlasSource_ojy0s")
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_fegsy")
 
 [node name="Control" type="Control" parent="."]
 clip_contents = true
@@ -167,6 +170,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.49375, 0.5, 0.425, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Control" type="Control" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_3daee")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(300, 432)
@@ -212,7 +236,7 @@ script = ExtResource("6_u6aay")
 script = ExtResource("7_b5b1y")
 to = NodePath("../..")
 event = &"ToPlay"
-delay_in_seconds = "1.5"
+delay_in_seconds = "1"
 
 [node name="ToAIPlay" type="Node" parent="StateChart/Root/Player/Outcome"]
 script = ExtResource("7_b5b1y")

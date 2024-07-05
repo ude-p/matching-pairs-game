@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh52x0toi08dc"
-path="res://.godot/imported/border_04_nobackground.png-d9bc22f511a7a3ff28026ba41934d85e.ctex"
+uid="uid://c676wxc3hbqbo"
+path="res://.godot/imported/overview.png-aca42719df62c4a8c9f3d596a97ee034.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/borders_v1/border_04_nobackground.png"
-dest_files=["res://.godot/imported/border_04_nobackground.png-d9bc22f511a7a3ff28026ba41934d85e.ctex"]
+source_file="res://assets/Fonts/NbPixelFontBundle_v1_0/overview.png"
+dest_files=["res://.godot/imported/overview.png-aca42719df62c4a8c9f3d596a97ee034.ctex"]
 
 [params]
 

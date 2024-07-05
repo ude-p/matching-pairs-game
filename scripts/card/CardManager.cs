@@ -68,7 +68,6 @@ public partial class CardManager : TileMap
                 int cellId = row * gridSize.Y + col;
                 int frontCardIndex = RandomizeIndex(levelCount, frontCardList);
                 int backCardIndex = RandomizeIndex(totalBackCardTiles, backCardList);
-                GD.Print($"FrontCardId is: {frontCardIndex}");
 
                 cellData[cellId] = new CardData(frontCardIndex, backCardIndex);
                 Vector2I tileCoord = source0.GetTileId(backCardIndex);

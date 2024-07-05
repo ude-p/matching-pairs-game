@@ -1,10 +1,14 @@
 using Godot;
 using GodotStateCharts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public partial class GameLogic : Node2D
 {
+    // Events
+    public static event Action<int> ScoreTracker;
+
     private CardManager cardManager;
     private StateChart stateChart;
     private bool isInputEnabled = true;
@@ -52,7 +56,7 @@ public partial class GameLogic : Node2D
         cardManager.touchCount = 0;
     }
 
-    private void OnOutcomeStateEntered() => ProcessOutcomeState(playerSelectedCards, "ToPlay", "ToAIPlay");
+    private void OnOutcomeStateEntered() => ProcessOutcomeState(0, playerSelectedCards, "ToPlay", "ToAIPlay");
 
     private async void OnAIPlayStateEntered()
     {
@@ -92,14 +96,16 @@ public partial class GameLogic : Node2D
         stateChart.SendEvent("ToAIOutcome");
     }
 
-    private void OnAIOutcomeStateEntered() => ProcessOutcomeState(aiSelectedCards, "ToAIPlay", "ToPlay");
+    private void OnAIOutcomeStateEntered() => ProcessOutcomeState(1, aiSelectedCards, "ToAIPlay", "ToPlay");
 
-    private void ProcessOutcomeState(List<CardManager.CardData> selectedCards, string previousState, string nextState)
+    private void ProcessOutcomeState(int layer, List<CardManager.CardData> selectedCards, string previousState, string nextState)
     {
 
         if (selectedCards[0].FrontCardId == selectedCards[1].FrontCardId)
         {
             selectedCards.ForEach(p => cardManager.EraseCell(0, p.CellPosition));
+            ScoreTracker?.Invoke(layer);
+
             stateChart.SendEvent(previousState);
         }
         else
@@ -107,7 +113,6 @@ public partial class GameLogic : Node2D
             selectedCards.ForEach(p => cardManager.SetCardState(p.CellPosition, 0, p.BackCardId));
             stateChart.SendEvent(nextState);
         }
-
     }
 
     private void UpdateSelectedCardsHistory(CardManager.CardData cardData)
