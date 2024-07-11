@@ -20,6 +20,12 @@ public partial class GameLogic : Node2D
     {
         cardManager = GetNode<CardManager>("%CardTileMap");
         stateChart = StateChart.Of(GetNode("%StateChart"));
+        GlobalSettings.Timeout += (object sender, EventArgs e) =>
+        {
+            ResetCardState(playerSelectedCards);
+            ResetCardState(aiSelectedCards);
+            GetNode<Node>("%StateChart").ProcessMode = ProcessModeEnum.Disabled;
+        };
     }
 
     public override void _Input(InputEvent @event)
@@ -46,7 +52,6 @@ public partial class GameLogic : Node2D
                 }
             }
         }
-
     }
 
     private void OnPlayStateEntered()
@@ -122,4 +127,12 @@ public partial class GameLogic : Node2D
 
         selectedCardsHistory.Enqueue(cardData);
     }
+
+    private void ResetCardState(List<CardManager.CardData> selectedCards)
+    {
+        if (selectedCards.Count == 0) return;
+
+        selectedCards.ForEach(p => cardManager.SetCardState(p.CellPosition, 0, p.BackCardId));
+    }
+
 }

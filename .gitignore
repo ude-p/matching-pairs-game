@@ -17,3 +17,6 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+
+Success! Wrote Microsoft.EntityFrameworkCore@8.0.6 to d:\Portfolio\Menu\Menu.csproj. Run dotnet restore to update your project.
