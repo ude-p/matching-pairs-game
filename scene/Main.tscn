@@ -1,15 +1,29 @@
-[gd_scene load_steps=14 format=3 uid="uid://05n4u4buqody"]
+[gd_scene load_steps=21 format=3 uid="uid://05n4u4buqody"]
 
 [ext_resource type="Script" path="res://scripts/main/GlobalSettings.cs" id="1_fegsy"]
 [ext_resource type="Texture2D" uid="uid://dr7ul6nknnguo" path="res://assets/Poker Cards pack/Decks .png" id="1_g2iob"]
 [ext_resource type="Script" path="res://scripts/state_machine/GameLogic.cs" id="1_utpty"]
-[ext_resource type="FontFile" uid="uid://c6tqy6d0d10s4" path="res://assets/Fonts/NbPixelFontBundle_v1_0/Habbo.ttf" id="2_3daee"]
+[ext_resource type="Texture2D" uid="uid://nh4bklxryloo" path="res://assets/UI/circle_mask.png" id="2_bw5r4"]
+[ext_resource type="FontFile" uid="uid://c0f5elxwbovoh" path="res://assets/Fonts/NbPixelFontBundle_v1_0/CelticTime.ttf" id="2_fjout"]
 [ext_resource type="Texture2D" uid="uid://cr7sadid5tu2o" path="res://assets/Poker Cards pack/cards.png" id="2_gv7q7"]
 [ext_resource type="Script" path="res://scripts/card/CardManager.cs" id="3_hjfqd"]
+[ext_resource type="Script" path="res://scripts/ui/pivot_offset.gd" id="3_n8pym"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="4_kff5u"]
+[ext_resource type="Texture2D" uid="uid://1mfstt44p6h" path="res://assets/UI/Avatars/icon-v1.png" id="4_w5gki"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="5_tjwm1"]
+[ext_resource type="Texture2D" uid="uid://ds72kqak3o1j" path="res://assets/UI/Avatars/icon-v3.png" id="6_3d0ih"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="6_u6aay"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_b5b1y"]
+[ext_resource type="Texture2D" uid="uid://fmuur6dwmvc" path="res://assets/UI/Cursor Select.png" id="15_q70r8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpaee"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sm4vl"]
+bg_color = Color(0.167119, 0.167119, 0.167119, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ojy0s"]
 texture = ExtResource("1_g2iob")
@@ -152,50 +166,177 @@ sources/0 = SubResource("TileSetAtlasSource_ojy0s")
 [node name="Main" type="Node2D"]
 script = ExtResource("1_fegsy")
 
-[node name="Control" type="Control" parent="."]
-clip_contents = true
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+anchor_mode = 0
+
+[node name="UI" type="Control" parent="Camera2D"]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -47.0
-offset_top = -185.0
-offset_right = 439.0
-offset_bottom = 679.0
-scale = Vector2(1.43, 1.43)
+offset_top = 2.0
+offset_right = 428.0
+offset_bottom = 928.0
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Camera2D/UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.49375, 0.5, 0.425, 1)
+color = Color(0.61, 0.584075, 0.5185, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Camera2D/UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 40.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+ratio = 6.0
+alignment_vertical = 0
 
-[node name="Control" type="Control" parent="Control/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Camera2D/UI/AspectRatioContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bpaee")
 
-[node name="Score" type="Label" parent="Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/UI/AspectRatioContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = -80
+
+[node name="Player" type="TextureRect" parent="Camera2D/UI/AspectRatioContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
+self_modulate = Color(0.167119, 0.167119, 0.167119, 1)
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_3daee")
-theme_override_font_sizes/font_size = 100
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture = ExtResource("2_bw5r4")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_n8pym")
+enable_center_pivot = true
+
+[node name="Mask" type="TextureRect" parent="Camera2D/UI/AspectRatioContainer/PanelContainer/HBoxContainer/Player"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(73.5, 35.5)
+size_flags_horizontal = 3
+texture = ExtResource("2_bw5r4")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_n8pym")
+enable_center_pivot = true
+
+[node name="Avatar" type="TextureRect" parent="Camera2D/UI/AspectRatioContainer/PanelContainer/HBoxContainer/Player/Mask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(73.5, 35.5)
+texture = ExtResource("4_w5gki")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_n8pym")
+enable_center_pivot = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Camera2D/UI/AspectRatioContainer/PanelContainer/HBoxContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_horizontal = 3
+ratio = 10.0
+
+[node name="Panel" type="Panel" parent="Camera2D/UI/AspectRatioContainer/PanelContainer/HBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sm4vl")
+
+[node name="Score" type="Label" parent="Camera2D/UI/AspectRatioContainer/PanelContainer/HBoxContainer/AspectRatioContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_fjout")
+theme_override_font_sizes/font_size = 30
+text = "0 - 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(300, 432)
-ignore_rotation = false
-zoom = Vector2(0.7, 0.7)
+[node name="Npc" type="TextureRect" parent="Camera2D/UI/AspectRatioContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color(0.167119, 0.167119, 0.167119, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture = ExtResource("2_bw5r4")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_n8pym")
+enable_center_pivot = true
+
+[node name="Mask" type="TextureRect" parent="Camera2D/UI/AspectRatioContainer/PanelContainer/HBoxContainer/Npc"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(73.5, 35.5)
+size_flags_horizontal = 3
+texture = ExtResource("2_bw5r4")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_n8pym")
+enable_center_pivot = true
+
+[node name="Avatar" type="TextureRect" parent="Camera2D/UI/AspectRatioContainer/PanelContainer/HBoxContainer/Npc/Mask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(73.5, 35.5)
+texture = ExtResource("6_3d0ih")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_n8pym")
+enable_center_pivot = true
+
+[node name="Countdown" type="Label" parent="Camera2D/UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.167119, 0.167119, 0.167119, 1)
+theme_override_fonts/font = ExtResource("2_fjout")
+theme_override_font_sizes/font_size = 40
+text = "10
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameLogic" type="Node2D" parent="."]
 script = ExtResource("1_utpty")
@@ -204,6 +345,46 @@ script = ExtResource("1_utpty")
 unique_name_in_owner = true
 tile_set = SubResource("TileSet_gj7nx")
 format = 2
+layer_0/name = "Cards"
+layer_1/name = "Cards"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Cards"
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "Cards"
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "Cards"
+layer_4/tile_data = PackedInt32Array()
+layer_5/name = "Cards"
+layer_5/tile_data = PackedInt32Array()
+layer_6/name = "Cards"
+layer_6/tile_data = PackedInt32Array()
+layer_7/name = "Cards"
+layer_7/tile_data = PackedInt32Array()
+layer_8/name = "Cards"
+layer_8/tile_data = PackedInt32Array()
+layer_9/name = "Cards"
+layer_9/tile_data = PackedInt32Array()
+layer_10/name = "Cards"
+layer_10/tile_data = PackedInt32Array()
+layer_11/name = "Cards"
+layer_11/tile_data = PackedInt32Array()
+layer_12/name = "Cards"
+layer_12/tile_data = PackedInt32Array()
+layer_13/name = "Cards"
+layer_13/tile_data = PackedInt32Array()
+layer_14/name = "Cards"
+layer_14/tile_data = PackedInt32Array()
+layer_15/name = "Cards"
+layer_15/tile_data = PackedInt32Array()
+layer_16/name = "Cards"
+layer_16/tile_data = PackedInt32Array()
+layer_17/name = "Cards"
+layer_17/tile_data = PackedInt32Array()
+layer_18/name = "Cards"
+layer_18/tile_data = PackedInt32Array()
+layer_19/name = "Cards"
+layer_19/tile_data = PackedInt32Array()
+layer_20/tile_data = PackedInt32Array()
 script = ExtResource("3_hjfqd")
 
 [node name="StateChart" type="Node" parent="."]
@@ -242,7 +423,7 @@ delay_in_seconds = "1"
 script = ExtResource("7_b5b1y")
 to = NodePath("../../../AI")
 event = &"ToAIPlay"
-delay_in_seconds = "1.5"
+delay_in_seconds = "1.2"
 
 [node name="AI" type="Node" parent="StateChart/Root"]
 script = ExtResource("5_tjwm1")
@@ -272,6 +453,16 @@ to = NodePath("../../../Player")
 event = &"ToPlay"
 delay_in_seconds = "0.5
 "
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 120.0
+one_shot = true
+
+[node name="Cusor" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("15_q70r8")
 
 [connection signal="state_entered" from="StateChart/Root/Player/Play" to="GameLogic" method="OnPlayStateEntered"]
 [connection signal="state_entered" from="StateChart/Root/Player/Outcome" to="GameLogic" method="OnOutcomeStateEntered"]

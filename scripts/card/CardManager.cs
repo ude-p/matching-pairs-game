@@ -15,13 +15,19 @@ public partial class CardManager : TileMap
 
     // Public Fields
     public int touchCount { get; set; } = 0;
-    private Dictionary<int, CardData> cellData { get; set; } = new();
+    public static Vector2I gridSize { get; private set; }
+    public static Vector2I cellSize { get; private set; }
 
     //Private
-    private Vector2I gridSize;
+    private Dictionary<int, CardData> cellData { get; set; } = new();
 
     // Built-in Functions
-    public override void _Ready() => SetupCards();
+
+    public override void _Ready()
+    {
+        cellSize = TileSet.TileSize;
+        SetupCards();
+    }
 
     // Public Funtions
     public void SetCardState(Vector2I cellPosition, int source, int tileID)

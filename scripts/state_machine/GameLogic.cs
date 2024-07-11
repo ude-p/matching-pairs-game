@@ -2,6 +2,7 @@ using Godot;
 using GodotStateCharts;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 public partial class GameLogic : Node2D
@@ -9,17 +10,27 @@ public partial class GameLogic : Node2D
     // Events
     public static event Action<int> ScoreTracker;
 
+    // Private Fields
+    private TextureRect playerNode, npcNode;
     private CardManager cardManager;
     private StateChart stateChart;
     private bool isInputEnabled = true;
     private List<CardManager.CardData> playerSelectedCards = new(), aiSelectedCards = new();
     private Queue<CardManager.CardData> selectedCardsHistory = new();
-    private int historyCount = 1;
+    private int historyCount = 2;
 
     public override void _Ready()
     {
         cardManager = GetNode<CardManager>("%CardTileMap");
         stateChart = StateChart.Of(GetNode("%StateChart"));
+        playerNode = GetNode<TextureRect>("%Player");
+        npcNode = GetNode<TextureRect>("%Npc");
+        GlobalSettings.Timeout += (object sender, EventArgs e) =>
+        {
+            ResetCardState(playerSelectedCards);
+            ResetCardState(aiSelectedCards);
+            GetNode<Node>("%StateChart").ProcessMode = ProcessModeEnum.Disabled;
+        };
     }
 
     public override void _Input(InputEvent @event)
@@ -46,20 +57,23 @@ public partial class GameLogic : Node2D
                 }
             }
         }
-
     }
-
     private void OnPlayStateEntered()
     {
         isInputEnabled = true;
         playerSelectedCards.Clear();
         cardManager.touchCount = 0;
+        playerNode.Modulate = Colors.White;
+        npcNode.Modulate = Colors.Gray;
     }
 
     private void OnOutcomeStateEntered() => ProcessOutcomeState(0, playerSelectedCards, "ToPlay", "ToAIPlay");
 
     private async void OnAIPlayStateEntered()
     {
+        playerNode.Modulate = Colors.Gray;
+        npcNode.Modulate = Colors.White;
+
         int iteration = 0;
         aiSelectedCards.Clear();
 
@@ -121,5 +135,12 @@ public partial class GameLogic : Node2D
             selectedCardsHistory.Dequeue();
 
         selectedCardsHistory.Enqueue(cardData);
+    }
+
+    private void ResetCardState(List<CardManager.CardData> selectedCards)
+    {
+        if (selectedCards.Count == 0) return;
+
+        selectedCards.ForEach(p => cardManager.SetCardState(p.CellPosition, 0, p.BackCardId));
     }
 }

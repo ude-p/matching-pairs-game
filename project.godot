@@ -17,15 +17,20 @@ config/icon="res://assets/UI/icon.svg"
 
 [display]
 
-window/size/viewport_width=486
-window/size/viewport_height=864
+window/size/viewport_width=428
+window/size/viewport_height=926
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/handheld/orientation=1
 
 [dotnet]
 
 project/assembly_name="Card-Game"
+
+[editor]
+
+movie_writer/movie_file="D:/Projects/Card-Game/footage/file.avi"
 
 [editor_plugins]
 
