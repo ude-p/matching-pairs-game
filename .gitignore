@@ -3,7 +3,6 @@
 .vs/
 .vscode/
 shaders/
-LICENSE
 
 # Godot-specific ignores
 .import/
