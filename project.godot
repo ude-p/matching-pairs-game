@@ -34,7 +34,7 @@ movie_writer/movie_file="D:/Projects/Card-Game/footage/file.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotLabelFontAutoSizer-1.0.0_godot_4.2/addons/label_font_auto_sizer/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
 
 [filesystem]
 

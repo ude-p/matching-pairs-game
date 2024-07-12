@@ -25,6 +25,15 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpaee"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sm4vl"]
+bg_color = Color(0.167119, 0.167119, 0.167119, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ojy0s"]
 texture = ExtResource("1_g2iob")
 margins = Vector2i(1, 0)
