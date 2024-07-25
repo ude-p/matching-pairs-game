@@ -2,9 +2,7 @@
 <img src="https://github.com/user-attachments/assets/13d8bc06-ac3c-43e7-b9f1-9b42e625f7c8" alt="Prototype-ezgif com-video-to-gif-converter" width="400" />
 
 ## Overview
-I saw this matching card game on TikTok and decided to code it as a side project. The rules are simple: collect the most pairs of cards before time runs out, winning your turn gives you an extra turn. The NPC logic keeps a history of turns, making it play smart and fair. There's also an option to crank up the NPC's difficulty.
-
-Since this is a side project, the game is not fully polished yet. The UI is half-baked, but the game mechanics are feature-complete. I'm hoping to add more cool features when i find the time.
+The rules are simple: collect the most pairs of cards before time runs out, winning your turn gives you an extra turn. The NPC logic keeps a history of turns, making it play smart and fair. There's also an option to crank up the NPC's difficulty.
 
 ## Run Game
 - Install Godot Engine with .NET support installed
