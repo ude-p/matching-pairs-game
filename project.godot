@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Card-Game"
 run/main_scene="res://scene/Main.tscn"
-config/features=PackedStringArray("4.2", "C#", "Mobile")
+config/features=PackedStringArray("4.3", "C#", "Mobile")
 config/icon="res://assets/UI/icon.svg"
 
 [display]

@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/Anta-Regular.ttf-4ba0e8f0bbc9ea4d5689be85cf38
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

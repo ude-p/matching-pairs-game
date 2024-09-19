@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/TinyUnicode.ttf-2bd56f1840e6bf3744b81032fbe17
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

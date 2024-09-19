@@ -25,15 +25,6 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpaee"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sm4vl"]
-bg_color = Color(0.167119, 0.167119, 0.167119, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ojy0s"]
 texture = ExtResource("1_g2iob")
 margins = Vector2i(1, 0)
@@ -355,45 +346,26 @@ unique_name_in_owner = true
 tile_set = SubResource("TileSet_gj7nx")
 format = 2
 layer_0/name = "Cards"
-layer_1/name = "Cards"
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = "Cards"
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = "Cards"
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = "Cards"
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = "Cards"
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = "Cards"
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = "Cards"
-layer_7/tile_data = PackedInt32Array()
-layer_8/name = "Cards"
-layer_8/tile_data = PackedInt32Array()
-layer_9/name = "Cards"
-layer_9/tile_data = PackedInt32Array()
-layer_10/name = "Cards"
-layer_10/tile_data = PackedInt32Array()
-layer_11/name = "Cards"
-layer_11/tile_data = PackedInt32Array()
-layer_12/name = "Cards"
-layer_12/tile_data = PackedInt32Array()
-layer_13/name = "Cards"
-layer_13/tile_data = PackedInt32Array()
-layer_14/name = "Cards"
-layer_14/tile_data = PackedInt32Array()
-layer_15/name = "Cards"
-layer_15/tile_data = PackedInt32Array()
-layer_16/name = "Cards"
-layer_16/tile_data = PackedInt32Array()
-layer_17/name = "Cards"
-layer_17/tile_data = PackedInt32Array()
-layer_18/name = "Cards"
-layer_18/tile_data = PackedInt32Array()
-layer_19/name = "Cards"
-layer_19/tile_data = PackedInt32Array()
-layer_20/tile_data = PackedInt32Array()
+layer_1/name = "Cards2"
+layer_2/name = "Cards3"
+layer_3/name = "Cards4"
+layer_4/name = "Cards5"
+layer_5/name = "Cards6"
+layer_6/name = "Cards7"
+layer_7/name = "Cards8"
+layer_8/name = "Cards9"
+layer_9/name = "Cards10"
+layer_10/name = "Cards11"
+layer_11/name = "Cards12"
+layer_12/name = "Cards13"
+layer_13/name = "Cards14"
+layer_14/name = "Cards15"
+layer_15/name = "Cards16"
+layer_16/name = "Cards17"
+layer_17/name = "Cards18"
+layer_18/name = "Cards19"
+layer_19/name = "Cards20"
+layer_20/name = "Layer20"
 script = ExtResource("3_hjfqd")
 
 [node name="StateChart" type="Node" parent="."]
